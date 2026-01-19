@@ -67,10 +67,43 @@ tr = {
         "file_path": "📂 文件路径:",
         "table_not_exist": "图片表 {} 不存在，请先加载图片",
     },
+    "ja": {
+        "title": "🔍 画像検索アプリ",
+        "caption": "🚀 OceanBase のベクトル検索機能で構築した類似画像検索アプリ",
+        "settings": "🔧 設定",
+        "search_setting": "検索設定",
+        "table_name_input": "テーブル名",
+        "table_name_help": "画像ベクトルなどを保存するテーブル名",
+        "recall_number": "リコール数",
+        "recall_number_help": "返す類似画像の枚数",
+        "show_distance": "距離を表示",
+        "show_file_path": "ファイルパスを表示",
+        "load_setting": "読み込み設定",
+        "image_base_input": "画像ディレクトリ",
+        "image_base_help": "読み込む画像ディレクトリの絶対パス",
+        "image_base_placeholder": "例: /data/imgs",
+        "load_images": "画像を読み込む",
+        "set_table_name_pls": "テーブル名を設定してください",
+        "set_image_base_pls": "画像ディレクトリを設定してください",
+        "image_base_not_exist": "設定した画像ディレクトリ {} は存在しません",
+        "images_loading": "画像を読み込み中...",
+        "images_loading_progress": "画像を読み込み中... (完了 {} / {})",
+        "images_loaded": "画像の読み込みが完了しました！",
+        "image_upload_label": "画像を選択...",
+        "image_upload_help": "類似画像を検索するために画像をアップロード",
+        "uploaded_image_header": "アップロード画像",
+        "uploaded_image_caption": "📌 アップロードした画像",
+        "similar_images_header": "類似画像",
+        "no_similar_images": "類似画像が見つかりません",
+        "image_no": "画像 {}",
+        "distance": "📏 距離:",
+        "file_path": "📂 ファイルパス:",
+        "table_not_exist": "画像テーブル {} が存在しません。先に画像を読み込んでください",
+    },
 }
 
 lang = os.getenv("UI_LANG", "zh")
-if lang not in ["en", "zh"]:
+if lang not in ["en", "zh", "ja"]:
     print("Invalid language, using default (zh)")
     lang = "zh"
 
