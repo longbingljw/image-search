@@ -85,7 +85,7 @@ elif table_exist:
         col1, col2 = st.columns(2)
         col1.subheader(t("uploaded_image_header"))
         col1.caption(t("uploaded_image_caption"))
-        col1.image(uploaded_file, use_column_width=True)
+        col1.image(uploaded_file, width="stretch")
 
         with open(tmp_path, "wb") as f:
             f.write(uploaded_file.read())
