@@ -14,9 +14,7 @@ img_pipe = AutoPipes.pipeline("text_image_embedding")
 
 
 def embed_img(path) -> list[float]:
-    embedding = img_pipe(path).get()[0]
-    # Ensure pyobvector receives a plain list
-    return embedding.tolist() if hasattr(embedding, "tolist") else list(embedding)
+    return img_pipe(path).get()[0]
 
 
 def load_imgs(dir_path: str) -> Iterator[ImageData]:
