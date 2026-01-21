@@ -31,6 +31,13 @@ with st.sidebar:
         help=t("table_name_help"),
     )
     top_k = st.slider(t("recall_number"), 1, 30, 10, help=t("recall_number_help"))
+    distance_threshold = st.number_input(
+        t("distance_threshold"),
+        min_value=0.0,
+        value=0.6,
+        step=0.01,
+        help=t("distance_threshold_help"),
+    )
     show_distance = st.checkbox(t("show_distance"), value=True)
     show_file_path = st.checkbox(t("show_file_path"), value=True)
 
@@ -92,6 +99,9 @@ elif table_exist:
 
         col2.subheader(t("similar_images_header"))
         results = store.search(tmp_path, limit=top_k)
+        results = [
+            r for r in results if r.get("distance", 0) <= distance_threshold
+        ]
         with col2:
             if len(results) == 0:
                 st.warning(t("no_similar_images"))
