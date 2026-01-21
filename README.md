@@ -12,10 +12,10 @@ Note: You need to prepare some images yourself and update the `Image Base` confi
 
 2. Install [Docker](https://docs.docker.com/get-docker/) to start the OceanBase database container.
 
-3. Install [Poetry](https://python-poetry.org/docs/) as a dependency management tool, you can refer to the following command,
+3. Install [uv](https://github.com/astral-sh/uv) as a dependency management tool, you can refer to the following command,
 
 ```bash
-python3 -m pip install poetry
+python3 -m pip install uv
 ```
 
 4. Obtain the database connection information of OceanBase 4.3.3 and above versions. If you do not plan to deploy OceanBase locally, you can refer to the OceanBase [open source version deployment solution](https://open.oceanbase.com/quickStart) or [OceanBase Cloud](https://www.oceanbase.com/free-trial) solution.
@@ -117,7 +117,7 @@ If the deployment is successful, you will see the following output:
 ### 2. Install dependencies
 
 ```bash
-poetry install
+uv sync
 ```
 
 ### 3. Set up environment variables
@@ -133,7 +133,7 @@ vi .env
 ### 4. Start the image search application
 
 ```bash
-poetry run streamlit run --server.runOnSave false image_search_ui.py
+uv run streamlit run --server.runOnSave false image_search_ui.py
 ```
 
 ### 5. Process and store images

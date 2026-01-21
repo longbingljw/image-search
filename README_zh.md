@@ -12,10 +12,10 @@
 
 2. 安装 [Docker](https://docs.docker.com/get-docker/) 用于启动 OceanBase 数据库容器
 
-3. 安装 [Poetry](https://python-poetry.org/docs/) 作为依赖管理工具，可参考下面的命令
+3. 安装 [uv](https://github.com/astral-sh/uv) 作为依赖管理工具，可参考下面的命令
 
 ```bash
-python3 -m pip install poetry
+python3 -m pip install uv
 ```
 
 4. 获取 OceanBase 4.3.3 及以上版本的数据库连接信息，如果不打算在本地部署 OceanBase，可参考 OceanBase [开源版部署方案](https://open.oceanbase.com/quickStart)或者 [OceanBase Cloud](https://www.oceanbase.com/free-trial) 方案。
@@ -118,7 +118,7 @@ mysql -h127.0.0.1 -P2881 -uroot@test -A -e "show databases"
 
 ```bash
 # 安装依赖
-poetry install
+uv sync
 ```
 
 ### 3. 配置环境变量
@@ -135,7 +135,7 @@ vi .env
 
 ```bash
 # 启动图像搜索应用界面
-poetry run streamlit run --server.runOnSave false image_search_ui.py
+uv run streamlit run --server.runOnSave false image_search_ui.py
 ```
 
 ### 5. 处理并存储图像数据
