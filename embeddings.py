@@ -42,7 +42,7 @@ def caption_img(path: str) -> str:
             messages=[{
                 "role": "user",
                 "content": [
-                    {"type": "text", "text": "Describe this image in one sentence, including the object category."},
+                    {"type": "text", "text": "What is the main object in this image? Answer in 2-3 words only."},
                     {"type": "image_url", "image_url": {"url": f"data:image/jpeg;base64,{b64_image}"}}
                 ]
             }],

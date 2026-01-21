@@ -32,6 +32,14 @@ with st.sidebar:
         help=t("table_name_help"),
     )
     top_k = st.slider(t("recall_number"), 1, 30, 10, help=t("recall_number_help"))
+    vector_weight = st.slider(
+        t("vector_weight"),
+        min_value=0.0,
+        max_value=1.0,
+        value=0.7,
+        step=0.1,
+        help=t("vector_weight_help"),
+    )
     distance_threshold = st.number_input(
         t("distance_threshold"),
         min_value=0.0,
@@ -103,10 +111,12 @@ elif table_exist:
         col1.write(f"{t('image_caption')} {caption}")
 
         col2.subheader(t("similar_images_header"))
-        results = store.search(tmp_path, limit=top_k)
-        results = [
-            r for r in results if r.get("distance", 0) <= distance_threshold
-        ]
+        results = store.hybrid_search(
+            tmp_path, 
+            limit=top_k, 
+            vector_weight=vector_weight,
+            distance_threshold=distance_threshold
+        )
         with col2:
             if len(results) == 0:
                 st.warning(t("no_similar_images"))
@@ -114,7 +124,7 @@ elif table_exist:
                 tabs = st.tabs([t("image_no", i + 1) for i in range(len(results))])
                 for res, tab in zip(results, tabs):
                     with tab:
-                        if show_distance:
+                        if show_distance and res.get("distance") is not None:
                             st.write(t("distance"), f"{res['distance']:.8f}")
                         if show_file_path:
                             st.write(t("file_path"), os.path.join(res["file_path"]))
