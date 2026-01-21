@@ -34,6 +34,7 @@ tr = {
         "image_no": "Image {}",
         "distance": "📏 Distance:",
         "file_path": "📂 File path:",
+        "image_caption": "📝 Description:",
         "table_not_exist": "The table {} does not exist, load images first please",
     },
     "zh": {
@@ -69,6 +70,7 @@ tr = {
         "image_no": "图片 {}",
         "distance": "📏 距离:",
         "file_path": "📂 文件路径:",
+        "image_caption": "📝 描述:",
         "table_not_exist": "图片表 {} 不存在，请先加载图片",
     },
     "ja": {
@@ -104,6 +106,7 @@ tr = {
         "image_no": "画像 {}",
         "distance": "📏 距離:",
         "file_path": "📂 ファイルパス:",
+        "image_caption": "📝 説明:",
         "table_not_exist": "画像テーブル {} が存在しません。先に画像を読み込んでください",
     },
 }

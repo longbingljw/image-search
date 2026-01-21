@@ -8,6 +8,7 @@ import streamlit as st
 from image_store import OBImageStore
 from connection import connection_args
 from i18n import t
+from embeddings import caption_img
 
 table_name = os.getenv("IMG_TABLE_NAME", "image_search")
 tmp_path = "tmp/temp.jpg"
@@ -96,6 +97,10 @@ elif table_exist:
 
         with open(tmp_path, "wb") as f:
             f.write(uploaded_file.read())
+        
+        # Generate caption
+        caption = caption_img(tmp_path)
+        col1.write(f"{t('image_caption')} {caption}")
 
         col2.subheader(t("similar_images_header"))
         results = store.search(tmp_path, limit=top_k)
@@ -113,6 +118,7 @@ elif table_exist:
                             st.write(t("distance"), f"{res['distance']:.8f}")
                         if show_file_path:
                             st.write(t("file_path"), os.path.join(res["file_path"]))
+                        st.write(t("image_caption"), res.get("caption", ""))
                         st.image(res["file_path"])
 else:
     st.warning(t("table_not_exist", table_name))

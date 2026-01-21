@@ -15,6 +15,7 @@ cols = [
     Column("id", Integer, primary_key=True, autoincrement=True),
     Column("file_name", String(512)),
     Column("file_path", String(2048)),
+    Column("caption", String(2048)),
     Column("embedding", VECTOR(512)),
 ]
 
@@ -22,6 +23,7 @@ output_fields = [
     "id",
     "file_name",
     "file_path",
+    "caption",
     # "embedding",
 ]
 
@@ -105,7 +107,8 @@ class OBImageStore:
                 "id": r[0],
                 "file_name": r[1],
                 "file_path": r[2],
-                "distance": r[3],
+                "caption": r[3],
+                "distance": r[4],
             }
             for r in res
         ]
