@@ -101,7 +101,6 @@ elif table_exist:
         col1, col2 = st.columns(2)
         col1.subheader(t("uploaded_image_header"))
         col1.caption(t("uploaded_image_caption"))
-        col1.image(uploaded_file, use_column_width=True)
 
         with open(tmp_path, "wb") as f:
             f.write(uploaded_file.read())
@@ -109,6 +108,7 @@ elif table_exist:
         # Generate caption
         caption = caption_img(tmp_path)
         col1.write(f"{t('image_caption')} {caption}")
+        col1.image(uploaded_file, use_column_width=True)
 
         col2.subheader(t("similar_images_header"))
         results = store.hybrid_search(
